@@ -40,11 +40,11 @@ int check(struct card *s[9], int i)
     int ix = i % 3, iy = i / 3;
     int west = iy * 3 + (ix - 1);
     int north = (iy - 1) * 3 + ix;
-    if (west >= 0)
+    if (ix - 1 >= 0)
         if (get(s[west], EAST) / 2 != get(s[i], WEST) / 2 ||
             get(s[west], EAST)     == get(s[i], WEST))
             return 0;
-    if (north >= 0)
+    if (iy - 1 >= 0)
         if (get(s[north], SOUTH) / 2 != get(s[i], NORTH) / 2 ||
             get(s[north], SOUTH)     == get(s[i], NORTH))
             return 0;
@@ -91,9 +91,6 @@ void solve(struct card cards[9], struct card *solution[9], int n)
     if (n == 9) {
         print_solution(solution);
         return;
-    }
-    if (n >= 6) {
-        print_solution(solution);
     }
     for (int c = 0; c < 9; c++) {
         if (!cards[c].mark) {
