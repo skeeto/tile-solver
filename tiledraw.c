@@ -9,22 +9,22 @@ const char *STROKE[] = {"black", "black", "black", "gray"};
 
 void draw(char sides[4], FILE *out)
 {
-    fprintf(out, "<svg width='100' height='100'>\n");
-    fprintf(out, "<g transform='translate(50,50) rotate(-90)'>\n");
-    fprintf(out, "<rect x='-50' y='-50' width='100' height='100' "
+    fprintf(out, "<svg width='200' height='200'>\n");
+    fprintf(out, "<g transform='translate(100,100) rotate(-90)'>\n");
+    fprintf(out, "<rect x='-100' y='-100' width='200' height='200' "
             "fill='#bbf'/>\n");
     for (int i = 0; i < 4; i++) {
-        double x = cos(i * 3.141592653589793 / 2) * 50;
-        double y = sin(i * 3.141592653589793 / 2) * 50;
+        double x = cos(i * 3.141592653589793 / 2) * 100;
+        double y = sin(i * 3.141592653589793 / 2) * 100;
         int c = strchr(CMYK, tolower(sides[i])) - CMYK;
         const char *fill = FILL[c];
         const char *stroke = STROKE[c];
         if (isupper(sides[i])) {
-            fprintf(out, "<circle cx='0' cy='0' r='20' fill='%s' "
+            fprintf(out, "<circle cx='0' cy='0' r='40' fill='%s' "
                     "stroke='%s' transform='translate(%.0f,%.0f)'/>\n",
                     fill, stroke, x, y);
         } else {
-            fprintf(out, "<rect x='-20' y='-20' width='40' height='40' "
+            fprintf(out, "<rect x='-40' y='-40' width='80' height='80' "
                     "fill='%s' stroke='%s' "
                     "transform='translate(%.0f,%.0f)'/>\n",
                     fill, stroke, x, y);

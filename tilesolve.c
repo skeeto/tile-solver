@@ -118,6 +118,7 @@ void solution_solve(struct solution *s, int n)
     if (n == ntiles) {
         s->nsolutions++;
         solution_print_simple(s);
+        solution_print(s);
     } else {
         for (int t = 0; t < ntiles; t++) {
             if (!s->tiles[t].mark) {
