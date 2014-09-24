@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_SIZE 4
+#define MAX_SIZE 5
 
 enum side {
     NORTH, EAST, SOUTH, WEST
