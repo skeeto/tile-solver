@@ -45,9 +45,17 @@ int solution_check(struct solution *s, int pos)
     return 1;
 }
 
+void print_bar(int n)
+{
+    printf("+");
+    for (int i = 0; i < n; i++)
+        putchar('-');
+    printf("+\n");
+}
+
 void solution_print(struct solution *s)
 {
-    printf("+---------+\n");
+    print_bar(s->size * 3);
     for (int y = 0; y < s->size; y++) {
         for (int i = 0; i < 3; i++) {
             printf("|");
@@ -75,7 +83,7 @@ void solution_print(struct solution *s)
             printf("|\n");
         }
     }
-    printf("+---------+\n");
+    print_bar(s->size * 3);
 }
 
 void solution_init(struct solution *s, FILE *in)
