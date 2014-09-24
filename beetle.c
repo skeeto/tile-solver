@@ -53,10 +53,12 @@ int check(struct card *s[9], int i)
 
 void print_solution(struct card *s[9])
 {
+    printf("+-----------+\n");
     for (int y = 0; y < 3; y++) {
         for (int i = 0; i < 3; i++) {
             for (int x = 0; x < 3; x++) {
                 int c = y * 3 + x;
+                printf("|");
                 switch (i) {
                 case 0:
                     if (s[c])
@@ -80,10 +82,10 @@ void print_solution(struct card *s[9])
                     break;
                 }
             }
-            printf("\n");
+            printf("|\n");
         }
     }
-    printf("\n");
+    printf("+-----------+\n");
 }
 
 void solve(struct card cards[9], struct card *solution[9], int n)
