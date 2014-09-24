@@ -1,3 +1,5 @@
 *.o
 tilesolve
 tilegen
+tiledraw
+*.svg
