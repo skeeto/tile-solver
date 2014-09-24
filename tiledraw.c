@@ -10,7 +10,7 @@ const char *STROKE[] = {"black", "black", "black", "gray"};
 void draw(char sides[4], FILE *out)
 {
     fprintf(out, "<svg width='100' height='100'>\n");
-    fprintf(out, "<g transform='translate(50,50)'>\n");
+    fprintf(out, "<g transform='translate(50,50) rotate(-90)'>\n");
     fprintf(out, "<rect x='-50' y='-50' width='100' height='100' "
             "fill='#bbf'/>\n");
     for (int i = 0; i < 4; i++) {
