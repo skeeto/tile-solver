@@ -17,7 +17,7 @@ const char SIDE_NAMES[] = "CcMmYyKk";
 struct solution {
     struct tile tiles[MAX_SIZE * MAX_SIZE];
     int solution[MAX_SIZE * MAX_SIZE];
-    int size;
+    int size, nsolutions;
 };
 
 int tile_get(struct tile *tile, enum side side)
@@ -86,6 +86,16 @@ void solution_print(struct solution *s)
     print_bar(s->size * 3);
 }
 
+void solution_print_simple(struct solution *s)
+{
+    int ntiles = s->size * s->size;
+    for (int t = 0; t < ntiles; t++) {
+        int orient = s->tiles[s->solution[t]].orient;
+        printf("%c%c ", 'A' + s->solution[t], "NESW"[orient]);
+    }
+    printf("\n");
+}
+
 void solution_init(struct solution *s, FILE *in)
 {
     fscanf(in, "%d\n", &s->size);
@@ -99,13 +109,15 @@ void solution_init(struct solution *s, FILE *in)
         tile->mark = 0;
         s->solution[i] = -1;
     }
+    s->nsolutions = 0;
 }
 
 void solution_solve(struct solution *s, int n)
 {
     int ntiles = s->size * s->size;
     if (n == ntiles) {
-        solution_print(s);
+        s->nsolutions++;
+        solution_print_simple(s);
     } else {
         for (int t = 0; t < ntiles; t++) {
             if (!s->tiles[t].mark) {
@@ -127,5 +139,5 @@ int main()
     struct solution solution;
     solution_init(&solution, stdin);
     solution_solve(&solution, 0);
-    return 0;
+    return solution.nsolutions > 0 ? 0 : -1;
 }
