@@ -1,9 +1,9 @@
 CFLAGS = -std=c99 -Wall -g3
 
-beetle : beetle.c
+tilesolve : tilesolve.c
 
-run : beetle
+run : tilesolve
 	./$^ < beetles.txt
 
 clean :
-	$(RM) beetle
+	$(RM) tilesolve
