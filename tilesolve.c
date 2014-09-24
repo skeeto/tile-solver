@@ -70,8 +70,8 @@ void solution_print(struct solution *s)
                         printf(" %c ", SIDE_NAMES[tile_get(tile, NORTH)]);
                         break;
                     case 1:
-                        printf("%c%x%c", SIDE_NAMES[tile_get(tile, WEST)],
-                               s->solution[c],
+                        printf("%c%c%c", SIDE_NAMES[tile_get(tile, WEST)],
+                               'A' + s->solution[c],
                                SIDE_NAMES[tile_get(tile, EAST)]);
                         break;
                     case 2:
